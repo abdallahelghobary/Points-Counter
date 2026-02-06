@@ -4,9 +4,18 @@ void main() {
   runApp(BasketballCounterApp());
 }
 
-class BasketballCounterApp extends StatelessWidget {
-  const BasketballCounterApp({super.key});
+class BasketballCounterApp extends StatefulWidget {
+  @override
+  State<BasketballCounterApp> createState() => _BasketballCounterAppState();
+}
 
+class _BasketballCounterAppState extends State<BasketballCounterApp> {
+  //const BasketballCounterApp({super.key});
+  int teamAPoints = 0;
+
+  int teamBPoints = 0;
+
+  // void addOnePoint() {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,9 +43,12 @@ class BasketballCounterApp extends StatelessWidget {
                       style: TextStyle(color: Colors.black, fontSize: 32),
                     ),
 
-                    Text(
-                      '0',
-                      style: TextStyle(color: Colors.black, fontSize: 168),
+                    SizedBox(
+                      
+                      child: Text(
+                        '$teamAPoints',
+                        style: TextStyle(color: Colors.black, fontSize: 160),
+                      ),
                     ),
 
                     ElevatedButton(
@@ -48,7 +60,10 @@ class BasketballCounterApp extends StatelessWidget {
                         ),
                         minimumSize: Size(140, 50),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        teamAPoints++;
+                        setState(() {});
+                      },
                       child: Text(
                         'Add 1 Point',
                         style: TextStyle(color: Colors.black, fontSize: 19),
@@ -66,7 +81,11 @@ class BasketballCounterApp extends StatelessWidget {
                         ),
                         minimumSize: Size(140, 50),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          teamAPoints += 2;
+                        });
+                      },
                       child: Text(
                         'Add 2 Point',
                         style: TextStyle(color: Colors.black, fontSize: 19),
@@ -84,7 +103,11 @@ class BasketballCounterApp extends StatelessWidget {
                         ),
                         minimumSize: Size(140, 50),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          teamAPoints += 3;
+                        });
+                      },
                       child: Text(
                         'Add 3 Point',
                         style: TextStyle(color: Colors.black, fontSize: 19),
@@ -105,6 +128,7 @@ class BasketballCounterApp extends StatelessWidget {
                   ),
                 ),
 
+                // Team B
                 Column(
                   children: [
                     Text(
@@ -113,8 +137,8 @@ class BasketballCounterApp extends StatelessWidget {
                     ),
 
                     Text(
-                      '0',
-                      style: TextStyle(color: Colors.black, fontSize: 168),
+                      '$teamBPoints',
+                      style: TextStyle(color: Colors.black, fontSize: 160),
                     ),
 
                     ElevatedButton(
@@ -126,7 +150,11 @@ class BasketballCounterApp extends StatelessWidget {
                         ),
                         minimumSize: Size(140, 50),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          teamBPoints++;
+                        });
+                      },
                       child: Text(
                         'Add 1 Point',
                         style: TextStyle(color: Colors.black, fontSize: 19),
@@ -144,7 +172,11 @@ class BasketballCounterApp extends StatelessWidget {
                         ),
                         minimumSize: Size(140, 50),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          teamBPoints += 2;
+                        });
+                      },
                       child: Text(
                         'Add 2 Point',
                         style: TextStyle(color: Colors.black, fontSize: 19),
@@ -162,7 +194,11 @@ class BasketballCounterApp extends StatelessWidget {
                         ),
                         minimumSize: Size(140, 50),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          teamBPoints += 3;
+                        });
+                      },
                       child: Text(
                         'Add 3 Point',
                         style: TextStyle(color: Colors.black, fontSize: 19),
@@ -184,7 +220,12 @@ class BasketballCounterApp extends StatelessWidget {
                   borderRadius: BorderRadius.circular(3),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  teamAPoints = 0;
+                  teamBPoints = 0;
+                });
+              },
               child: Text(
                 'Reset',
                 style: TextStyle(color: Colors.black, fontSize: 20),
